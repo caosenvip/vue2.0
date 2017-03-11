@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in bannerArr" :key="index">
+          <img :src="item" >
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+</template>
+
+<script>
+  require('../../style/swiper.min.css')
+//  import '../../style/swiper.min.css'
+  import Swiper from 'swiper'
+
+  export default{
+    data(){
+        return{
+          imgUrl:"./src/images/",
+          bannerArr:[
+            "http://img1.3lian.com/2015/a1/113/d/10.jpg",
+            "http://pic.58pic.com/58pic/14/27/45/71r58PICmDM_1024.jpg"
+          ]
+        }
+    },
+    components: {
+
+    },
+    mounted(){
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 3000,//自动播放时间
+        loop: true,//环状播放
+        autoplayDisableOnInteraction: false,//false 干扰后重新计算自动播放
+        centeredSlides: true, // true居中  false居左
+        pagination: '.swiper-pagination', //编码块
+      })
+    }
+  }
+
+
+ </script>
+ 
+ 
+ 
+ 以上为做过的vue2项目中轮播图swiper的组件，
+ 正常引入本地文件swiper.min.js会一直报错 -- TypeError: Cannot assign to read only property 'exports' of object '#<Object>'，
+ swiper.min.css用import和require引入均正常，
+ 引入swiper.min.js的解决方法为：
+ 本地npm安装swiper插件：cnpm i swiper -S -D
+ 然后组件内引入已本地安装插件，而不是引入外部文件：import Swiper from 'swiper'
+ 即可正常使用。
+ 
+ 另附参考文献地址：
+ 更改webpack的配置文件：https://segmentfault.com/q/1010000005169531/a-1020000005170343（可能版本不同或解决的问题根本就不同，
+ 此方法试验未成功解决此问题，但有参考价值，后续研究webpack应该有帮助）
+ vue笔记：http://www.cnblogs.com/web-dev-engineer/p/6362797.html
+ vue-awesome-swiper插件：http://www.qdfuns.com/notes/24424/e1e5c965b5fe48bdde34560895a6d743
