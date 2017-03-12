@@ -1,0 +1,27 @@
+1.html页面跳转：
+<div id="app">
+  <p>
+      <!-- 使用 router-link 组件来导航. -->
+      <!-- 通过传入 `to` 属性指定在main.js文件设置的别名链接，如/1 -->
+      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <router-link to="/1">Go to Foo</router-link>
+  </p>
+  <!-- 路由出口 -->
+  <!-- 点击<router-link>的时候指定的页面将渲染在这里 -->
+  <router-view></router-view>
+</div>
+
+2.js控制页面跳转：
+比如html中这样写
+<span @click="clickFn">点我</span>
+
+js中这样写
+methods:{
+    clickFn:function(){
+      //其中orderConfirmation是你定义的一个路由模块  this.commodityId为参数
+      this.$router.push({path:'/orderConfirmation/'+this.commodityId});
+      
+        //this.$router.go('/login');//其中login是你定义的一个路由模块   此方法再vue2中实测失败了
+        //this.$router.go({path:'/login'});//其中login是你定义的一个路由模块   此方法再vue2中实测也失败了
+        
+}
