@@ -1,0 +1,9 @@
+Vue 2.0做路由的重定向：
+//routes
+var router = new VueRouter({
+    mode: 'hash',
+    routes: [
+        { path: "*", redirect: '/index' },
+        { path: '/index', component: require('./pages/index.vue') },
+    ]
+});
