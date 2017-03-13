@@ -1,0 +1,20 @@
+vue2中template内需有节点包裹内容：
+<template>
+
+  <div>  //需有节点包裹内容
+    首页
+  </div>
+
+</template>
+如果写成
+<template>
+  首页
+</template>
+会报如下错误：
+Error compiling template:
+  
+  
+  首页
+  
+  
+  - Component template requires a root element, rather than just text.
